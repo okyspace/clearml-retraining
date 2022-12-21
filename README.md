@@ -45,3 +45,24 @@
   }
 }
 ```
+
+# Tasks
+- [ ] Draft a rough concept. Check back with team.
+   - add a diagram to map the dev and standalone setup.
+- [x] Enable export and import of tasks.
+- [x] Enable export and import of models.
+- [x] Enable export and import of datasets.
+- [ ] Enable export and import of base dockers.
+- [ ] Enable export and import of preprocess codes.
+- [x] Enable generation of deploy info and import info.
+- [ ] Generalise the scripts with TF framework.
+- [ ] Test it with an offline environment.
+- [ ] Improve deploy info and import info.
+- [ ] Test it with own Triton image, instead of clearml-serving-triton.
+- [ ] Test with more complex example (YOLOv5).
+- [ ] Test with more complex example (a customised project).
+- [ ] Test with retraining pipelines to find out additional exporting / importing required.
+- [ ] Run pylint. 
+- [ ] Draft out how to sync standalone env back to dev, e.g. extra datasets annotated and used for retraining. newer retrained model in standalone env.
+  - list down possible cases and see how to sync back. 
+  - see if can "auto-sync" back. 
