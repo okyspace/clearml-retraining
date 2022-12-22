@@ -54,8 +54,11 @@
 - [x] Enable export and import of datasets.
 - [ ] Enable export and import of base dockers.
 - [ ] Enable export and import of preprocess codes.
+- [ ] Enable export and import of training codes
 - [x] Enable generation of deploy info and import info.
 - [ ] Generalise the scripts with TF framework.
+- [ ] Create a docker image to do the exporting and importing. Add the scripts as entrypoint. 
+  - Setup the AIP equivalent and test. 
 - [ ] Test it with an offline environment.
 - [ ] Improve deploy info and import info.
 - [ ] Test it with own Triton image, instead of clearml-serving-triton.
