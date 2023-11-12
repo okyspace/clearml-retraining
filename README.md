@@ -1,5 +1,10 @@
-# deploy2standalone
+# ClearML Retraining
+This repo purpose is to build up components which are useful to leverage on ClearML for model experiment/development and retraining across different ClearML instances.
+Conmponents:
+1. ClearML-Airgapped
+2. ClearML-Retrain
 
+## ClearML-Airgapped
 # Deploy Info Structure
 - This is the info that will be exported by export.py and used by import.py to bring the deployment to standalone environment.
 
