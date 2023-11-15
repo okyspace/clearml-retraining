@@ -1,9 +1,10 @@
+import os
+import json
+
 from datetime import datetime
 import argparse
 import pickle
 import requests
-import os
-import json
 
 from clearml import Task
 from clearml import Model
@@ -13,6 +14,9 @@ from utils import add_to_json
 
 
 def export_from_development(args):
+    '''
+    This method will export the experiment from the dev env.
+    '''
     deploy_info = {}
 
     # write exporter info
@@ -124,7 +128,10 @@ def export_datasets(experiment_task_ids, deploy_info):
             # download dataset to destinated folder
             ds = Dataset.get(dataset_id=dataset_id)
             if not ds.is_final: ds.finalize()  # only finalize dataset can be copied
-            dest = os.path.join(os.getcwd(), 'datasets', dataset_id)
+            dest = os.path.join(
+                os.getcwd(),
+                'datasets',
+                dataset_id)
             ds.get_mutable_local_copy(target_folder=dest)
 
             # save dataset task as pickle
@@ -155,14 +162,13 @@ def get_args():
         '--serving-service-id',
         default='cd423197c94344c4b1d41a5cd2408770',
         help='serving service id')
-    args = parser.parse_args()
-    return args
+    return parser.parse_args()
 
 
 if __name__ == "__main__":
     Task.init(
-        project_name='Exporting2Standalone', 
-        task_name=str(datetime.now().date()), 
+        project_name='Exporting2Standalone',
+        task_name=str(datetime.now().date()),
         output_uri=True)
     args = get_args()
     export_from_development(args)
