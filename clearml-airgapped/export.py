@@ -85,7 +85,8 @@ def export_experiment_tasks(models, deploy_info):
         experiment_task_ids.append(experiment_task_id)
 
         # save task object as pickle
-        if not os.path.exists('tasks'): os.mkdir('tasks')
+        if not os.path.exists('tasks'):
+            os.mkdir('tasks')
         task_folder = os.path.join('tasks', experiment_task_id)
         with open(task_folder, 'wb') as f:
             pickle.dump(experiment_task, f)
@@ -127,7 +128,8 @@ def export_datasets(experiment_task_ids, deploy_info):
 
             # download dataset to destinated folder
             ds = Dataset.get(dataset_id=dataset_id)
-            if not ds.is_final: ds.finalize()  # only finalize dataset can be copied
+            if not ds.is_final:
+              ds.finalize()  # only finalize dataset can be copied
             dest = os.path.join(
                 os.getcwd(),
                 'datasets',
@@ -135,7 +137,8 @@ def export_datasets(experiment_task_ids, deploy_info):
             ds.get_mutable_local_copy(target_folder=dest)
 
             # save dataset task as pickle
-            if not os.path.exists('datasets_1'): os.mkdir('datasets_1')
+            if not os.path.exists('datasets_1'):
+                os.mkdir('datasets_1')
             dataset_task_path = os.path.join('datasets_1', dataset_id)
             with open(dataset_task_path, 'wb') as f:
                 pickle.dump(dataset_id, f)

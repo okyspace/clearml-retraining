@@ -4,7 +4,8 @@ def add_dataset(project, name, files_path):
     '''
     Creates a clearml dataset
     '''
-    print('creating dataset in project {}, name {}, files_path {}'.format(project, name, files_path))
+    print('creating dataset in project {}, name {}, files_path {}'
+        .format(project, name, files_path))
     ds = Dataset.create(dataset_project=project, dataset_name=name)
     ds.add_files(path=files_path)
     ds.upload()

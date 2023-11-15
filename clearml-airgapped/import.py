@@ -74,8 +74,8 @@ def import_experiment_task(task_id, tasks_folder, import_info):
     '''
     # read from file
     t_path = os.path.join(tasks_folder, task_id)
-    f = open(t_path, "rb")
-    t_obj = pickle.load(f)
+    with open(t_path, "rb") as f:
+      t_obj = pickle.load(f)
 
     # import to standalone ClearML
     new_t_id = Task.import_task(t_obj).id
@@ -204,12 +204,12 @@ def get_deploy_info(deploy_info):
 #   tasks_to_import = deploy_info['tasks']
 #   datasets_details = deploy_info['datasets']
 #   import2standalone(
-#       tasks_to_import, 
+#       tasks_to_import,
 #       datasets_details,
-#       args.tasks_folder, 
-#       args.models_folder, 
-#       args.datasets_folder, 
-#       args.output_uri, 
+#       args.tasks_folder,
+#       args.models_folder,
+#       args.datasets_folder,
+#       args.output_uri,
 #       import_info)
 
 #   # write import info to file
@@ -219,6 +219,9 @@ def get_deploy_info(deploy_info):
 
 if __name__ == '__main__':
     # log this deployment too
-    Task.init(project_name='Deploying2Standalone', task_name=str(datetime.now().date()), output_uri=True)
+    Task.init(
+        project_name='Deploying2Standalone',
+        task_name=str(datetime.now().date()),
+        output_uri=True)
     args = get_args()
     import2standalone(args)
